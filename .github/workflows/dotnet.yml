@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set working directory
-        uses: <path/to/directory>
+        uses: samples/aspnetcore
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
