@@ -48,7 +48,6 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Download artifact
-        working-directory: ./
         uses: actions/download-artifact@v2
         with:
           name: application-artifact
