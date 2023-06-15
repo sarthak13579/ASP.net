@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set working directory
-        working-directory: <path/to/directory>
+        uses: <path/to/directory>
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
