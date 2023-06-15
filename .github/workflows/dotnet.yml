@@ -11,13 +11,11 @@ on:
 jobs:
   build-and-deploy:
     runs-on: [self-hosted, azure-vm]  # Replace with your Azure VM configuration
+    working-directory: ./
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Set working directory
-        uses: samples/aspnetcore
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
@@ -31,14 +29,14 @@ jobs:
       - name: Build application
         shell: cmd
         run: dotnet build --configuration Release
-
+      
       - name: Run tests
         shell: cmd
         run: dotnet test --configuration Release
 
       - name: Publish application
         shell: cmd
-        run: dotnet publish --no-restore --configuration Release --output ./publish
+        run: dotnet publish --no-restore --configuration Release --output ./publish 
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
@@ -65,4 +63,3 @@ jobs:
             $path = "C:\inetpub\wwwroot\my-app"
             Remove-Item -Path $path\* -Recurse -Force
             Expand-Archive -Path $env:GITHUB_WORKSPACE\application-artifact.zip -DestinationPath $path -Force
-
