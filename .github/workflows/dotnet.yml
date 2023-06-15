@@ -39,6 +39,7 @@ jobs:
         run: dotnet publish --no-restore --configuration Release --output ./publish 
 
       - name: Upload artifact
+        working-directory: ./
         uses: actions/upload-artifact@v2
         with:
           name: application-artifact
@@ -48,6 +49,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Download artifact
+        working-directory: ./
         uses: actions/download-artifact@v2
         with:
           name: application-artifact
